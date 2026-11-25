@@ -1,0 +1,755 @@
+/*
+ * رفيق المسلم — طبقة المظهر الحديث الاختيارية
+ * تُحمّل بعد أنماط index.html، ولا تنشط إلا مع html.modern-ui.
+ * لا تتدخل في صفحات المصحف، أو عارض المسابقة بملء الشاشة، أو آليات الإظهار.
+ */
+
+html.modern-ui {
+  --rm-bg: #081e25;
+  --rm-bg-bottom: #091b25;
+  --rm-text: #edf6f2;
+  --rm-muted: #b1c8c5;
+  --rm-surface: #103537;
+  --rm-surface-2: #122d37;
+  --rm-panel: #173f40;
+  --rm-field: #0b292d;
+  --rm-line: rgba(188, 218, 203, .18);
+  --rm-gold: #e8ca8b;
+  --rm-gold-line: rgba(232, 202, 139, .42);
+  --rm-green: #72d5b0;
+  --rm-accent-bg: #174e44;
+  --rm-shadow: 0 13px 30px rgba(0, 13, 18, .23);
+  --rm-small-shadow: 0 5px 15px rgba(0, 13, 18, .16);
+  --rm-focus: #e9ca86;
+  color-scheme: dark;
+}
+
+html.modern-ui.light {
+  --rm-bg: #edf4ef;
+  --rm-bg-bottom: #f6f5ec;
+  --rm-text: #193c3b;
+  --rm-muted: #536e6b;
+  --rm-surface: #fffefa;
+  --rm-surface-2: #f2f8f3;
+  --rm-panel: #e5f2e9;
+  --rm-field: #fffefa;
+  --rm-line: rgba(32, 91, 73, .18);
+  --rm-gold: #87621e;
+  --rm-gold-line: rgba(151, 117, 48, .36);
+  --rm-green: #206c53;
+  --rm-accent-bg: #dcefe3;
+  --rm-shadow: 0 13px 30px rgba(33, 76, 62, .09);
+  --rm-small-shadow: 0 5px 15px rgba(33, 76, 62, .07);
+  --rm-focus: #246b56;
+  color-scheme: light;
+}
+
+html.modern-ui body {
+  background: radial-gradient(ellipse at 50% 0%, #20534c 0, transparent 450px),
+              linear-gradient(160deg, var(--rm-bg), var(--rm-bg-bottom));
+  color: var(--rm-text);
+  font-family: Tahoma, Arial, sans-serif;
+  -webkit-tap-highlight-color: rgba(107, 191, 151, .18);
+}
+html.modern-ui.light body {
+  background: radial-gradient(ellipse at 50% 0%, #d7e9dc 0, transparent 450px),
+              linear-gradient(160deg, var(--rm-bg), var(--rm-bg-bottom));
+}
+
+/* رأس التطبيق والتاريخ والتنقل السريع */
+html.modern-ui body > header {
+  padding: calc(28px + env(safe-area-inset-top, 0px)) 16px 20px;
+}
+html.modern-ui .moon {
+  position: absolute;
+  top: calc(10px + env(safe-area-inset-top, 0px));
+  left: 64px;
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--rm-gold-line);
+  border-radius: 25px;
+  background: linear-gradient(145deg, rgba(227, 200, 136, .17), rgba(51, 129, 106, .09));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), var(--rm-small-shadow);
+  font-size: 39px;
+}
+html.modern-ui header h1 {
+  margin: 14px 0 12px;
+  color: var(--rm-gold);
+  font-size: 28px;
+  letter-spacing: .2px;
+  text-shadow: none;
+}
+html.modern-ui .settings-gear {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  border-color: var(--rm-gold-line);
+  background: var(--rm-surface);
+  color: var(--rm-gold);
+  box-shadow: var(--rm-small-shadow);
+}
+html.modern-ui .header-date-list {
+  padding: 8px 14px;
+  border-color: var(--rm-line);
+  border-radius: 20px;
+  background: linear-gradient(145deg, var(--rm-surface), var(--rm-surface-2));
+  box-shadow: var(--rm-shadow);
+  backdrop-filter: none;
+}
+html.modern-ui .header-date-list:before {
+  width: 3px;
+  background: linear-gradient(180deg, var(--rm-gold), var(--rm-green));
+}
+html.modern-ui .header-date-row + .header-date-row { border-color: var(--rm-line); }
+html.modern-ui .header-date-icon {
+  width: 34px;
+  height: 34px;
+  flex-basis: 34px;
+  border-color: var(--rm-line);
+  border-radius: 12px;
+  background: var(--rm-accent-bg);
+}
+html.modern-ui .header-date-label { color: var(--rm-muted); }
+html.modern-ui .header-date-value { color: var(--rm-text); }
+html.modern-ui .header-date-row.hijri .header-date-value { color: var(--rm-gold); }
+html.modern-ui .home-feature-strip {
+  width: min(100%, 390px);
+  padding: 11px;
+  border-color: var(--rm-line);
+  border-radius: 20px;
+  background: linear-gradient(145deg, var(--rm-surface), var(--rm-surface-2));
+  box-shadow: var(--rm-small-shadow);
+}
+html.modern-ui .home-feature-caption { color: var(--rm-gold); }
+html.modern-ui .home-feature-slide {
+  min-height: 62px;
+  padding: 9px;
+  border: 1px solid var(--rm-line);
+  border-radius: 15px;
+  background: var(--rm-accent-bg);
+  color: var(--rm-text);
+}
+html.modern-ui .home-feature-icon { background: var(--rm-surface); border: 1px solid var(--rm-line); }
+html.modern-ui .home-feature-copy strong { color: var(--rm-text); }
+html.modern-ui .home-feature-copy small { color: var(--rm-muted); }
+html.modern-ui .home-feature-action { color: var(--rm-gold); }
+html.modern-ui .home-feature-dots i { background: var(--rm-line); }
+html.modern-ui .home-feature-dots i.active { background: var(--rm-gold); }
+html.modern-ui .header-prayer-countdown {
+  padding: 16px;
+  border: 1px solid rgba(235, 211, 152, .4);
+  border-radius: 20px;
+  background: linear-gradient(120deg, #164b40, #164456 70%, #16333e);
+  box-shadow: var(--rm-shadow);
+}
+html.modern-ui .header-prayer-countdown .label { color: #d5e8da; }
+html.modern-ui .header-prayer-countdown strong { color: #fff7dc; font-size: 29px; }
+html.modern-ui .header-prayer-countdown small { color: #d3e6de; }
+html.modern-ui .prayer-dhikr-ticker {
+  margin-top: 14px;
+  border-color: var(--rm-gold-line);
+  border-radius: 16px;
+  background: var(--rm-surface-2);
+}
+html.modern-ui .prayer-dhikr-item { color: var(--rm-gold); }
+
+/* ترتيب مختلف للرأس في التصميم الحديث: علامة وهوية أفقية، ثم التاريخ والعدّاد. */
+html.modern-ui body > header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "brand" "dates" "countdown" "feature" "ticker";
+  align-items: center;
+  gap: 12px 14px;
+  text-align: right;
+  padding-top: calc(18px + env(safe-area-inset-top, 0px));
+}
+html.modern-ui .moon {
+  position: absolute;
+  top: calc(10px + env(safe-area-inset-top, 0px));
+  left: 64px;
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  font-size: 24px;
+  border-radius: 16px;
+}
+html.modern-ui .wallet-quick {
+  position: absolute;
+  top: calc(10px + env(safe-area-inset-top, 0px));
+  left: 116px;
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  border-radius: 16px;
+  z-index: 6;
+}
+html.modern-ui header h1 {
+  grid-area: brand;
+  margin: 0;
+  padding-left: 112px;
+  font-size: 25px;
+  text-align: right;
+}
+html.modern-ui .header-date { grid-area: dates; width: 100%; margin: 0; }
+html.modern-ui .header-prayer-countdown { grid-area: countdown; width: 100%; margin: 0; text-align: center; }
+html.modern-ui .home-feature-strip { grid-area: feature; width: 100%; margin: 0; }
+html.modern-ui .prayer-dhikr-ticker { grid-area: ticker; width: 100%; margin: 0; }
+
+/* القوائم والبطاقات: لا يشمل صندوق المصحف المصوّر */
+html.modern-ui .container { padding: 14px 16px; }
+html.modern-ui .section-title {
+  margin: 20px 2px 14px;
+  padding: 2px 12px 2px 0;
+  border-right: 3px solid var(--rm-gold);
+  color: var(--rm-gold);
+  font-size: 18px;
+  line-height: 1.6;
+}
+html.modern-ui .app-page:not(#page-quran):not(#page-quran-competitions) .card {
+  padding: 22px 16px;
+  margin-bottom: 16px;
+  border: 1px solid var(--rm-line);
+  border-radius: 24px;
+  background: linear-gradient(150deg, var(--rm-surface), var(--rm-surface-2));
+  box-shadow: var(--rm-shadow);
+  backdrop-filter: none;
+}
+html.modern-ui .app-page:not(#page-quran):not(#page-quran-competitions) .card h2 {
+  color: var(--rm-text);
+  font-size: 19px;
+  line-height: 1.65;
+}
+html.modern-ui .description,
+html.modern-ui .date,
+html.modern-ui .city-note,
+html.modern-ui .toggle-note { color: var(--rm-muted); line-height: 1.9; }
+html.modern-ui .description { font-size: 13px; }
+html.modern-ui .page-heading {
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 18px;
+}
+html.modern-ui .page-heading .section-title { flex: 1; min-width: 0; margin: 0; }
+html.modern-ui .back-btn {
+  min-height: 44px;
+  padding: 9px 13px;
+  border-color: var(--rm-line);
+  border-radius: 14px;
+  background: var(--rm-surface);
+  color: var(--rm-gold);
+  box-shadow: var(--rm-small-shadow);
+}
+html.modern-ui .menu-grid { gap: 10px; margin-top: 14px; }
+html.modern-ui .menu-group-title {
+  margin: 8px 0 2px;
+  padding: 14px 3px 9px;
+  border-color: var(--rm-line);
+  color: var(--rm-gold);
+  font-size: 15px;
+}
+html.modern-ui .menu-btn {
+  min-width: 0;
+  min-height: 112px;
+  padding: 15px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid var(--rm-line);
+  border-radius: 20px;
+  background: linear-gradient(145deg, var(--rm-surface), var(--rm-surface-2));
+  color: var(--rm-text);
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: right;
+  box-shadow: var(--rm-small-shadow);
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+html.modern-ui .menu-btn:not([hidden]) { display: flex; }
+html.modern-ui .menu-btn span:not([hidden]) {
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--rm-line);
+  border-radius: 14px;
+  background: var(--rm-accent-bg);
+  font-size: 23px;
+}
+html.modern-ui .tasbeeh-launch {
+  grid-column: 1 / -1;
+  min-height: 54px;
+  margin: 0;
+  padding: 13px;
+  border-color: var(--rm-gold-line);
+  border-radius: 17px;
+  background: var(--rm-accent-bg);
+  color: var(--rm-text);
+  box-shadow: var(--rm-small-shadow);
+}
+html.modern-ui .menu-btn:active,
+html.modern-ui .back-btn:active,
+html.modern-ui .tasbeeh-launch:active { transform: scale(.98); }
+html.modern-ui .page-heading { animation: rafiq-modern-arrive .26s ease-out both; }
+@keyframes rafiq-modern-arrive {
+  from { transform: translateY(5px); }
+  to { transform: translateY(0); }
+}
+
+/* مواقيت الصلاة والعناصر الرئيسية */
+html.modern-ui .city-picker { margin: 12px 0 8px; }
+html.modern-ui .city-picker input,
+html.modern-ui .city-picker select {
+  min-height: 48px;
+  border-color: var(--rm-line);
+  color: var(--rm-text);
+  box-shadow: none;
+}
+html.modern-ui .city-picker input { background: var(--rm-field); }
+/* نحتفظ بسهم select الأصلي ولا نستبدل صورته المضمنة. */
+html.modern-ui .city-picker select {
+  background-repeat: no-repeat, no-repeat;
+  background-position: left 14px center, 0 0;
+}
+html.modern-ui .city-picker input::placeholder { color: var(--rm-muted); }
+html.modern-ui .city-picker select option { background: var(--rm-field); color: var(--rm-text); }
+html.modern-ui .location-current-btn {
+  min-height: 46px;
+  border-color: var(--rm-line);
+  border-radius: 14px;
+  background: var(--rm-accent-bg);
+  color: var(--rm-text);
+}
+html.modern-ui .prayer-times { gap: 8px; margin-top: 16px; }
+html.modern-ui .prayer-time,
+html.modern-ui .time-box {
+  padding: 13px 5px;
+  border-color: var(--rm-line);
+  border-radius: 15px;
+  background: var(--rm-panel);
+  box-shadow: none;
+}
+html.modern-ui .prayer-time strong,
+html.modern-ui .time-box strong { color: var(--rm-gold); }
+html.modern-ui .prayer-time span { color: var(--rm-text); }
+html.modern-ui .time-box span { color: var(--rm-muted); }
+html.modern-ui .prayer-time.next {
+  border-color: var(--rm-gold-line);
+  background: var(--rm-accent-bg);
+  box-shadow: inset 0 0 0 1px var(--rm-gold-line);
+}
+html.modern-ui .fast-card {
+  padding: 15px;
+  border-color: var(--rm-line);
+  border-radius: 18px;
+  background: var(--rm-accent-bg);
+  box-shadow: none;
+}
+html.modern-ui .fast-kicker { color: var(--rm-green); }
+html.modern-ui .fast-chips span { color: var(--rm-text); border-color: var(--rm-line); background: var(--rm-surface); }
+html.modern-ui .fast-next { color: var(--rm-muted); border-color: var(--rm-line); }
+html.modern-ui .fast-badge { background: #dfc27e; color: #183b33; box-shadow: none; }
+
+/* صفحات الأدعية والأذكار والمحتوى الذي يُنشأ برمجيًا */
+html.modern-ui .adhkar-item,
+html.modern-ui .dua-card,
+html.modern-ui .cms-item,
+html.modern-ui .story-item {
+  padding: 16px;
+  border: 1px solid var(--rm-line);
+  border-radius: 18px;
+  background: var(--rm-surface);
+  color: var(--rm-text);
+  box-shadow: var(--rm-small-shadow);
+}
+html.modern-ui .adhkar-item h3,
+html.modern-ui .dua-card h3,
+html.modern-ui .dua-cat-head,
+html.modern-ui .cms-item h3,
+html.modern-ui .story-item summary { color: var(--rm-gold); }
+html.modern-ui .adhkar-text,
+html.modern-ui .dua-text,
+html.modern-ui .story-text,
+html.modern-ui .cms-item p { color: var(--rm-text); line-height: 2.2; }
+html.modern-ui .adhkar-meta,
+html.modern-ui .dua-src,
+html.modern-ui .dua-count,
+html.modern-ui .cms-meta,
+html.modern-ui .hadith-src { color: var(--rm-muted); }
+html.modern-ui .adhkar-tabs { gap: 6px; }
+html.modern-ui .adhkar-tab,
+html.modern-ui .dua-chip,
+html.modern-ui .dua-btn,
+html.modern-ui .interval-chip,
+html.modern-ui .salat-chip,
+html.modern-ui .tasbeeh-phrase {
+  border-color: var(--rm-line);
+  border-radius: 13px;
+  background: var(--rm-surface-2);
+  color: var(--rm-text);
+}
+html.modern-ui .adhkar-tab.active,
+html.modern-ui .dua-chip.active,
+html.modern-ui .dua-btn.on,
+html.modern-ui .interval-chip.active,
+html.modern-ui .salat-chip.active,
+html.modern-ui .tasbeeh-phrase.active {
+  border-color: #b79147;
+  background: #dfc27e;
+  color: #173a33;
+}
+html.modern-ui .adhkar-count { border-color: var(--rm-gold-line); color: var(--rm-gold); }
+html.modern-ui .quran-search,
+html.modern-ui .cms-form input,
+html.modern-ui .cms-form textarea,
+html.modern-ui .cms-form select,
+html.modern-ui .interval-custom input,
+html.modern-ui .wallet-form input,
+html.modern-ui .prayer-adjust-controls input {
+  min-height: 46px;
+  border: 1px solid var(--rm-line);
+  border-radius: 14px;
+  background: var(--rm-field);
+  color: var(--rm-text);
+  font-size: 16px;
+  box-shadow: none;
+}
+html.modern-ui .quran-search::placeholder,
+html.modern-ui .cms-form input::placeholder,
+html.modern-ui .cms-form textarea::placeholder,
+html.modern-ui .wallet-form input::placeholder { color: var(--rm-muted); }
+html.modern-ui .quran-search:focus,
+html.modern-ui .cms-form input:focus,
+html.modern-ui .cms-form textarea:focus,
+html.modern-ui .cms-form select:focus,
+html.modern-ui .city-picker input:focus,
+html.modern-ui .city-picker select:focus,
+html.modern-ui .interval-custom input:focus,
+html.modern-ui .wallet-form input:focus {
+  outline: 2px solid var(--rm-focus);
+  outline-offset: 2px;
+}
+html.modern-ui .app-page:not(#page-quran):not(#page-quran-competitions) .quran-status { color: var(--rm-muted); }
+html.modern-ui #page-khatma .quran-action,
+html.modern-ui #page-quran-audio .quran-action,
+html.modern-ui #page-quran-wallet .quran-action,
+html.modern-ui .cms-action.secondary,
+html.modern-ui .interval-custom button,
+html.modern-ui .prayer-adjust-actions button,
+html.modern-ui .prayer-adjust-controls button {
+  border-color: var(--rm-line);
+  border-radius: 13px;
+  background: var(--rm-accent-bg);
+  color: var(--rm-text);
+}
+html.modern-ui .cms-action:not(.secondary):not(.cms-danger),
+html.modern-ui .permission-btn,
+html.modern-ui .wallet-submit,
+html.modern-ui .qc-join {
+  border-color: #dfc27e;
+  border-radius: 14px;
+  background: #dfc27e;
+  color: #173a33;
+}
+html.modern-ui .internet-section-badge:not(.offline),
+html.modern-ui .lec-notice:not(.offline) {
+  border-color: var(--rm-line);
+  border-radius: 14px;
+  background: var(--rm-accent-bg);
+  color: var(--rm-text);
+}
+html.modern-ui .note {
+  padding: 15px;
+  border-color: var(--rm-gold-line);
+  border-radius: 17px;
+  background: var(--rm-surface-2);
+  color: var(--rm-text);
+  line-height: 1.9;
+}
+html.modern-ui .prayer { color: var(--rm-muted); }
+
+/* الإعدادات وحالات المفاتيح */
+html.modern-ui .toggle-list { gap: 10px; }
+html.modern-ui .toggle-row,
+html.modern-ui .interval-box,
+html.modern-ui .prayer-adjust-panel {
+  border: 1px solid var(--rm-line);
+  border-radius: 19px;
+  background: linear-gradient(145deg, var(--rm-surface), var(--rm-surface-2));
+  color: var(--rm-text);
+  box-shadow: var(--rm-small-shadow);
+}
+html.modern-ui .toggle-row { min-height: 70px; padding: 13px; }
+html.modern-ui .toggle-row.on { border-color: var(--rm-gold-line); background: var(--rm-accent-bg); }
+html.modern-ui .toggle-row.warn { border-color: #d59e65; }
+html.modern-ui .t-ico,
+html.modern-ui .toggle-row.on .t-ico {
+  border-color: var(--rm-line);
+  border-radius: 14px;
+  background: var(--rm-accent-bg);
+}
+html.modern-ui .t-title { color: var(--rm-text); line-height: 1.6; }
+html.modern-ui .t-sub,
+html.modern-ui .toggle-row.action .t-sub,
+html.modern-ui .toggle-row.on .t-sub { color: var(--rm-muted); line-height: 1.6; }
+html.modern-ui .t-chev { color: var(--rm-gold); }
+html.modern-ui .t-switch { background: #7d9690; border-color: var(--rm-line); }
+html.modern-ui .toggle-row.on .t-switch { background: #238061; border-color: #57aa8a; }
+html.modern-ui .toggle-row.warn .t-switch { background: #a76739; border-color: #d59e65; }
+html.modern-ui .interval-box { padding: 15px; }
+html.modern-ui .interval-custom { flex-wrap: wrap; }
+
+/* خيارات الواجهة الفعلية: تبقى حالة الراديو والإظهار بيد التطبيق. */
+html.modern-ui #page-interface-choice .interface-options {
+  margin: 16px 0;
+  padding: 14px;
+  border: 1px solid var(--rm-line);
+  border-radius: 20px;
+  background: var(--rm-surface-2);
+  box-shadow: var(--rm-small-shadow);
+}
+html.modern-ui #page-interface-choice .interface-options-legend,
+html.modern-ui.light #page-interface-choice .interface-options-legend {
+  padding: 0 7px;
+  color: var(--rm-gold);
+  font-size: 14px;
+  font-weight: bold;
+}
+html.modern-ui #page-interface-choice .interface-option { margin: 0; }
+html.modern-ui #page-interface-choice .interface-option.is-selected,
+html.modern-ui.light #page-interface-choice .interface-option.is-selected {
+  border-color: var(--rm-gold-line);
+  background: var(--rm-accent-bg);
+  box-shadow: inset 0 0 0 1px var(--rm-gold-line);
+}
+html.modern-ui #page-interface-choice .interface-option input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  accent-color: #238061;
+}
+html.modern-ui #page-interface-choice .interface-option input[type="radio"]:focus-visible {
+  outline: 2px solid var(--rm-focus);
+  outline-offset: 3px;
+}
+html.modern-ui #page-interface-choice .interface-choice-status,
+html.modern-ui.light #page-interface-choice .interface-choice-status {
+  color: var(--rm-green);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* أسماء اختيارية متوافقة مع مكوّنات اختيار المظهر عند التوسعة. */
+html.modern-ui .appearance-picker,
+html.modern-ui .theme-picker {
+  margin: 12px 0;
+  padding: 15px;
+  border: 1px solid var(--rm-line);
+  border-radius: 20px;
+  background: var(--rm-surface);
+  color: var(--rm-text);
+  box-shadow: var(--rm-small-shadow);
+}
+html.modern-ui .appearance-options:not([hidden]),
+html.modern-ui .theme-options:not([hidden]) { display: flex; flex-wrap: wrap; gap: 9px; }
+html.modern-ui .appearance-option,
+html.modern-ui .theme-option {
+  flex: 1 1 120px;
+  min-height: 48px;
+  padding: 11px 13px;
+  border: 1px solid var(--rm-line);
+  border-radius: 14px;
+  background: var(--rm-surface-2);
+  color: var(--rm-text);
+  font: bold 14px Tahoma, Arial, sans-serif;
+  text-align: right;
+}
+html.modern-ui .appearance-option.active,
+html.modern-ui .appearance-option[aria-checked="true"],
+html.modern-ui .appearance-option[aria-pressed="true"],
+html.modern-ui .theme-option.active,
+html.modern-ui .theme-option[aria-checked="true"],
+html.modern-ui .theme-option[aria-pressed="true"] {
+  border-color: var(--rm-gold-line);
+  background: var(--rm-accent-bg);
+  box-shadow: inset 0 0 0 1px var(--rm-gold-line);
+}
+
+/* النوافذ غير التابعة للقارئ */
+html.modern-ui .adhan-modal,
+html.modern-ui .tasbeeh-modal,
+html.modern-ui .quiz-ov { background: rgba(3, 20, 23, .76); }
+html.modern-ui .adhan-dialog,
+html.modern-ui .tasbeeh-dialog,
+html.modern-ui .quiz-box {
+  border-color: var(--rm-gold-line);
+  border-radius: 24px;
+  background: linear-gradient(155deg, var(--rm-surface), var(--rm-surface-2));
+  color: var(--rm-text);
+  box-shadow: 0 24px 60px rgba(0, 14, 18, .35);
+}
+html.modern-ui .adhan-modal-title,
+html.modern-ui .tasbeeh-heading,
+html.modern-ui .tasbeeh-count,
+html.modern-ui .quiz-top b { color: var(--rm-gold); }
+html.modern-ui .adhan-hint,
+html.modern-ui .tasbeeh-current,
+html.modern-ui .tasbeeh-footer,
+html.modern-ui .quiz-score { color: var(--rm-muted); }
+html.modern-ui .adhan-option {
+  border-color: var(--rm-line);
+  border-radius: 15px;
+  background: var(--rm-surface-2);
+  color: var(--rm-text);
+}
+html.modern-ui .adhan-option input { accent-color: #238061; }
+html.modern-ui .adhan-action { border-color: var(--rm-gold-line); border-radius: 14px; background: #23745a; color: #fff; }
+html.modern-ui .adhan-close,
+html.modern-ui .tasbeeh-close,
+html.modern-ui .quiz-x {
+  border-color: var(--rm-line);
+  background: var(--rm-accent-bg);
+  color: var(--rm-text);
+}
+html.modern-ui .tasbeeh-reset { border-color: var(--rm-line); background: var(--rm-surface-2); color: var(--rm-text); }
+html.modern-ui .quiz-insight { border-color: var(--rm-line); background: var(--rm-accent-bg); }
+html.modern-ui .quiz-q { color: var(--rm-text); }
+html.modern-ui .quiz-opt:not(.ok):not(.bad) { border-color: var(--rm-line); background: var(--rm-surface-2); color: var(--rm-text); }
+html.modern-ui .quiz-next { background: #dfc27e; color: #173a33; }
+
+/* بطاقات المسابقات والمحفظة فقط، دون المساس بصور المصحف أو أداته */
+html.modern-ui .qc-card,
+html.modern-ui .wallet-form,
+html.modern-ui .wallet-request {
+  border-color: var(--rm-line);
+  border-radius: 20px;
+  background: linear-gradient(145deg, var(--rm-surface), var(--rm-surface-2));
+  color: var(--rm-text);
+  box-shadow: var(--rm-small-shadow);
+}
+html.modern-ui .qc-title,
+html.modern-ui .qc-section-title,
+html.modern-ui .wallet-request-ref { color: var(--rm-gold); }
+html.modern-ui .qc-desc,
+html.modern-ui .qc-empty,
+html.modern-ui .wallet-request-meta,
+html.modern-ui .wallet-form label { color: var(--rm-muted); }
+html.modern-ui .qc-stat,
+html.modern-ui .qc-time { border-color: var(--rm-line); background: var(--rm-panel); }
+html.modern-ui .qc-stat b,
+html.modern-ui .qc-time span { color: var(--rm-text); }
+html.modern-ui .qc-stat small,
+html.modern-ui .qc-time small { color: var(--rm-muted); }
+html.modern-ui.light .qc-badge.open { color: #175e41; }
+html.modern-ui.light .qc-badge.done { color: #80601e; }
+html.modern-ui.light .qc-badge.soon { color: #315c92; }
+html.modern-ui.light .qc-badge.paused { color: #80591c; }
+html.modern-ui.light .qc-card-countdown { color: var(--rm-muted); }
+html.modern-ui .wallet-balance-card {
+  border-color: var(--rm-gold-line);
+  border-radius: 22px;
+  background: linear-gradient(135deg, #164b40, #153c49);
+  box-shadow: var(--rm-shadow);
+}
+html.modern-ui .wallet-balance-label,
+html.modern-ui .wallet-balance-unit,
+html.modern-ui .wallet-secondary-balance { color: #d9e9e2; }
+html.modern-ui .wallet-balance-amount { color: #f3d89d; }
+html.modern-ui .developer {
+  border-top-color: var(--rm-gold-line);
+  background: var(--rm-surface-2);
+}
+html.modern-ui .moving-text { color: var(--rm-gold); }
+
+/* تمييز التركيز دون تعطيل النقر أو الحالات المعطّلة. */
+html.modern-ui .container button:focus-visible,
+html.modern-ui .container [role="button"]:focus-visible,
+html.modern-ui .container [role="switch"]:focus-visible,
+html.modern-ui .settings-gear:focus-visible,
+html.modern-ui .adhan-dialog button:focus-visible,
+html.modern-ui .tasbeeh-dialog button:focus-visible,
+html.modern-ui .quiz-box button:focus-visible {
+  outline: 2px solid var(--rm-focus);
+  outline-offset: 3px;
+}
+@media (max-width: 360px) {
+  html.modern-ui .container { padding-right: 12px; padding-left: 12px; }
+  html.modern-ui .menu-btn { min-height: 108px; padding: 12px; font-size: 13px; }
+  html.modern-ui .adhkar-tab { padding: 10px 4px; font-size: 12px; }
+  html.modern-ui .page-heading .section-title { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.modern-ui .moon,
+  html.modern-ui .page-heading,
+  html.modern-ui .moving-text,
+  html.modern-ui .prayer-dhikr-track { animation: none; }
+  html.modern-ui .moving-text,
+  html.modern-ui .prayer-dhikr-track { transform: none; }
+  html.modern-ui .developer,
+  html.modern-ui .prayer-dhikr-ticker { overflow-x: auto; }
+  html.modern-ui .menu-btn,
+  html.modern-ui .back-btn,
+  html.modern-ui .tasbeeh-launch,
+  html.modern-ui .toggle-row,
+  html.modern-ui .t-switch,
+  html.modern-ui .t-switch i { transition: none; }
+}
+
+/* ===== سجل العمليات: بطاقات + نافذة التفاصيل ===== */
+#wallet-ledger-list{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.wallet-tx-card{display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:16px;background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1);box-shadow:0 4px 14px rgba(0,0,0,.18);cursor:pointer;transition:transform .15s ease,border-color .15s ease;-webkit-tap-highlight-color:transparent}
+.wallet-tx-card:active{transform:scale(.985)}
+.wallet-tx-card:focus-visible{outline:2px solid #e0c27e;outline-offset:2px}
+.wallet-tx-icon{flex:0 0 44px;width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;background:rgba(255,255,255,.08)}
+.wallet-tx-card.is-reward .wallet-tx-icon{background:rgba(49,190,128,.18)}
+.wallet-tx-card.is-debit .wallet-tx-icon{background:rgba(240,150,90,.18)}
+.wallet-tx-card.is-done .wallet-tx-icon{background:rgba(120,170,255,.18)}
+.wallet-tx-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.wallet-tx-title{font-size:15px;color:#fff}
+.wallet-tx-sub{font-size:12.5px;color:#e0c27e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wallet-tx-date{font-size:11.5px;opacity:.7}
+.wallet-tx-side{display:flex;flex-direction:column;align-items:flex-end;direction:ltr;line-height:1.2}
+.wallet-tx-amount{font-size:15px;font-weight:700;white-space:nowrap}
+.wallet-tx-cur{font-size:11px;opacity:.7}
+.wallet-tx-card.is-reward .wallet-tx-amount{color:#7ee2b0}
+.wallet-tx-card.is-debit .wallet-tx-amount{color:#ffb089}
+.wallet-tx-card.is-done .wallet-tx-amount{color:#a9c6ff}
+.wallet-tx-chevron{opacity:.45;font-size:22px}
+
+.wtx-overlay{position:fixed;inset:0;z-index:100002;background:rgba(0,0,0,.72);display:flex;align-items:flex-end;justify-content:center;direction:rtl;animation:wtxFade .18s ease}
+.wtx-sheet{width:100%;max-width:480px;max-height:90vh;display:flex;flex-direction:column;background:#10281f;color:#fff;border:1px solid rgba(224,194,126,.35);border-bottom:0;border-radius:24px 24px 0 0;box-shadow:0 -12px 44px rgba(0,0,0,.55);font-family:inherit;animation:wtxUp .22s ease}
+@media(min-width:560px){.wtx-overlay{align-items:center;padding:18px}.wtx-sheet{border-radius:22px;border-bottom:1px solid rgba(224,194,126,.35)}}
+.wtx-head{text-align:center;padding:20px 18px 14px;border-bottom:1px solid rgba(255,255,255,.09)}
+.wtx-icon{display:inline-flex;width:56px;height:56px;border-radius:18px;align-items:center;justify-content:center;font-size:28px;background:rgba(255,255,255,.09)}
+.wtx-sheet.is-reward .wtx-icon{background:rgba(49,190,128,.2)}
+.wtx-sheet.is-debit .wtx-icon{background:rgba(240,150,90,.2)}
+.wtx-sheet.is-done .wtx-icon{background:rgba(120,170,255,.2)}
+.wtx-head h3{margin:10px 0 6px;font-size:18px;color:#e0c27e}
+.wtx-amount{font-size:26px;font-weight:800;direction:ltr}
+.wtx-amount small{font-size:13px;opacity:.7;font-weight:600}
+.wtx-sheet.is-reward .wtx-amount{color:#7ee2b0}
+.wtx-sheet.is-debit .wtx-amount{color:#ffb089}
+.wtx-sheet.is-done .wtx-amount{color:#a9c6ff}
+.wtx-body{padding:14px 18px;overflow:auto;-webkit-overflow-scrolling:touch}
+.wtx-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(255,255,255,.1);font-size:14px}
+.wtx-row span{opacity:.72;flex:0 0 auto}
+.wtx-row b{text-align:left;font-weight:600;word-break:break-word}
+.wtx-section{margin-top:14px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+.wtx-section h4{margin:0 0 6px;font-size:14px;color:#e0c27e}
+.wtx-section .wtx-row:last-child{border-bottom:0}
+.wtx-text{margin:8px 0 0;line-height:1.9;font-size:14px;color:#dfe9e4;white-space:pre-wrap}
+.wtx-ok{color:#a4f0c5}
+.wtx-admin{background:rgba(224,194,126,.1);border-color:rgba(224,194,126,.35)}
+.wtx-ref-label{margin-top:14px;font-size:12.5px;opacity:.75}
+.wtx-ref{display:block;margin-top:6px;background:#08170f;border-radius:10px;padding:12px;color:#f5d78d;text-align:center;font:700 15px monospace;direction:ltr;word-break:break-all}
+.wtx-actions{display:flex;gap:10px;padding:12px 18px calc(16px + env(safe-area-inset-bottom,0px))}
+.wtx-btn{flex:1;border:0;border-radius:12px;padding:13px;font-size:15px;color:#fff;font-family:inherit}
+.wtx-copy{background:#187c5a}
+.wtx-close{background:#33465a}
+@keyframes wtxUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes wtxFade{from{opacity:0}to{opacity:1}}

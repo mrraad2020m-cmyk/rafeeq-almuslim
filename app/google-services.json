@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "954642542309",
+    "project_id": "rafeeqalmuslim-97811",
+    "storage_bucket": "rafeeqalmuslim-97811.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:954642542309:android:72c792226888a55706ae0c",
+        "android_client_info": {
+          "package_name": "com.raad.monasabatna"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCns8kGHBmvyb2tXlW7pliur3WrGc5v0No"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

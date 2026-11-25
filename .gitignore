@@ -1,0 +1,14 @@
+*.jks
+*.keystore
+keystore.properties
+local.properties
+build/
+.gradle/
+.idea/
+*.apk
+*.aab
+*.sql
+*.txt
+*.zip
+.cg/
+*.md
