@@ -89,6 +89,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        UpdateChecker.check(this);
         WalletPushTokenRegistrar.register(this);
         handleWalletPushIntent(getIntent());
         // Adhan is ON for first installs. Preserve an explicit OFF choice on later launches.
