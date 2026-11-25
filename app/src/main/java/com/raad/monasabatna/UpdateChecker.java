@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class UpdateChecker {
     private static final String JSON_URL =
-        "https://mrraad2020m-cmyk.github.io/rafeeq-almuslim-update.json";
+        "https://mrraad2020m-cmyk.github.io/rafeeqalmuslimupdate/rafeeq-almuslim-update.json";
 
     public static void check(final Activity act) {
         new Thread(() -> {
